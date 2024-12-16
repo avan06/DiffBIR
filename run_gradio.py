@@ -1,5 +1,4 @@
 from typing import List
-import math
 from argparse import ArgumentParser
 import random
 
@@ -8,7 +7,6 @@ import torch
 import gradio as gr
 from PIL import Image
 from omegaconf import OmegaConf
-from tqdm import tqdm
 from accelerate.utils import set_seed
 
 from diffbir.model.cldm import ControlLDM
@@ -189,7 +187,7 @@ def process(
         return [sample], "Success :)"
     except Exception as e:
         return [error_image], f"Failed :( {e}"
-
+    
 
 # TODO: add help information for each option
 MARKDOWN = """
@@ -415,4 +413,4 @@ with block:
         outputs=[result_gallery, status],
     )
 
-block.launch()
+block.launch(inbrowser=True)
